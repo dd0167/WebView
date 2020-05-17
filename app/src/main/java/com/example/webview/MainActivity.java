@@ -12,32 +12,24 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    WebView wv;
+    WebView WebView;
     String url="https://www.google.com/";
-    EditText et1;
-    EditText et2;
-    EditText et3;
-    Button sp;
-    String a;
-    String b;
-    String c;
-    String url2;
+    EditText A, B, C;
+    String a, b, c, url2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        wv=(WebView) findViewById(R.id.wv);
-        wv.getSettings().setJavaScriptEnabled(true);
-        wv.loadUrl(url);
-        wv.setWebViewClient(new MyWebViewClient());
+        WebView=(WebView) findViewById(R.id.WebView);
+        WebView.getSettings().setJavaScriptEnabled(true);
+        WebView.loadUrl(url);
+        WebView.setWebViewClient(new MyWebViewClient());
 
-        sp=(Button) findViewById(R.id.sp);
-
-        et1=(EditText) findViewById(R.id.et1);
-        et2=(EditText) findViewById(R.id.et2);
-        et3=(EditText) findViewById(R.id.et3);
+        A=(EditText) findViewById(R.id.A);
+        B=(EditText) findViewById(R.id.B);
+        C=(EditText) findViewById(R.id.C);
     }
 
     private class MyWebViewClient extends WebViewClient {
@@ -47,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void click(View view) {
-        a=et1.getText().toString();
-        b=et2.getText().toString();
-        c=et3.getText().toString();
+    public void StartPage(View view) {
+        a=A.getText().toString();
+        b=B.getText().toString();
+        c=C.getText().toString();
         url2="https://www.google.com/search?q="+a+"x%5E2%2B"+b+"x%2B"+c+"&oq=2x%5E2%2B4x%2B3&aqs=chrome..69i57j0l7.7867j0j9&sourceid=chrome&ie=UTF-8";
         if (a.equals("") || b.equals("") || c.equals(""))
         {
@@ -88,7 +80,10 @@ public class MainActivity extends AppCompatActivity {
             if (!a.equals("0") && !b.equals("0") && c.equals("0")) {
                 url2="https://www.google.com/search?q=" + a + "x%5E2%2B" + b + "x&oq=6x%5E2%2B4x&aqs=chrome..69i57j69i59l2j0l5.3302j0j7&sourceid=chrome&ie=UTF-8";
             }
-            wv.loadUrl(url2);
+            WebView.loadUrl(url2);
+            A.setText("");
+            B.setText("");
+            C.setText("");
         }
     }
 }
